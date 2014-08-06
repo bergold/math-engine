@@ -1,4 +1,4 @@
-importScripts('calcutil.js');
+importScripts('mathutil.js');
 
 var parseCmd = function(data) {
     var response = {};
