@@ -124,7 +124,7 @@ calcengine.factory('Calculation', function($q, $timeout, Mode) {
         calcRPN: function(rpn, opts, vars) {
             var timeout = opts.timeout || 5000;
             var deferred = $q.defer();
-            var worker = new Worker('app/worker.calcengine.js');
+            var worker = new Worker('worker.js');
             worker.onmessage = function(evt) {
                 var data = evt.data;
                 if (data.status == 'success') deferred.resolve(data);
