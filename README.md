@@ -1,2 +1,2 @@
-mathengine
-==========
+math-engine
+===========
