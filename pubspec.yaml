@@ -1,0 +1,9 @@
+name: mathengine
+version: 0.1.0
+description: This package is build to work with mathematical expressions.
+dependencies:
+  mathutil:
+    path: ../math-util
+#    git: git://github.com/bergold/math-util
+#dev_dependencies:
+#  unittest: any
