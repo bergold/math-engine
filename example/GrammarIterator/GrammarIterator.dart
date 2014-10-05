@@ -1,6 +1,4 @@
-library example.mathengine.Tokenizer;
-
-import "dart:html";
+library example.mathengine.GrammarIterator;
 
 import "package:mathengine/mathengine.dart";
 
@@ -15,18 +13,9 @@ void main() {
   grammar.addPattern("function", new RegExp(r"\b(?:sin|cos|tan)\b"));
   grammar.addPattern("constant", new RegExp(r"\b(?:PI|E|PHI)\b"));
   
-  var tokenizer = new Tokenizer.fromGrammar(grammar);
-  document.querySelector("#inp_form").addEventListener("submit", (evt) {
-    evt.preventDefault();
-    var text = (document.querySelector("#inp") as InputElement).value;
-    var out = new StringBuffer();
-    var time = -window.performance.now();
-    var tokens = tokenizer.tokenize(text);
-    time += window.performance.now();
-    out.writeAll(tokens, "\n");
-    out.writeln("\n-----");
-    out.writeln(time.toString() + "ms");
-    document.querySelector("#out").text = out.toString();
-  });
+  var pit = grammar.patternIterator;
+  while (pit.moveNext()) {
+    print(pit.currentToken + ": " + pit.current.toString());
+  }
   
 }
