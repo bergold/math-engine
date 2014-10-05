@@ -42,15 +42,4 @@ class Tokenizer {
     return strarr;
   }
   
-  _applyPattern(pattern, strarr, applyfn) {
-    for (var i = 0; i < strarr.length; i++) {
-      var str = strarr[i];
-      if (str is Token) continue;
-      var match = pattern.firstMatch(str);
-      if (match == null) {
-        
-      }
-    }
-  }
-  
 }
