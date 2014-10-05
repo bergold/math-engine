@@ -6,4 +6,7 @@ class Token {
   
   Token(this.type, this.content);
   
+  @override
+  String toString() => (type + ": '" + content + "'");
+  
 }

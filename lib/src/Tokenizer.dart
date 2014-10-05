@@ -11,27 +11,29 @@ class Tokenizer {
     grammar.tokens.forEach((token, patterns) {
       patterns.forEach((pattern) {
         
-        for (var i = 0; i < strarr.length; i++) {
+        var i = -1;
+        while (++i < strarr.length) {
           var str = strarr[i];
           
           if (str is Token) continue;
           
           var match = pattern.firstMatch(str);
-          if (match == null) {
-            var before = str.substr(0, match.start);
-            var after = str.substr(match.end);
+          if (match != null) {
+            var before = str.substring(0, match.start);
+            var after = str.substring(match.end);
+            var index = i;
             
-            strarr.removeAt(i);
+            strarr.removeAt(index);
             
             if (before.isNotEmpty) {
-              strarr.insert(i++, before);
+              strarr.insert(index++, before);
             }
             
             var wrapped = new Token(token, match[0]);
-            strarr.insert(i++, wrapped);
+            strarr.insert(index++, wrapped);
             
             if (after.isNotEmpty) {
-              strarr.insert(i++, after);
+              strarr.insert(index++, after);
             }
           }
         }
